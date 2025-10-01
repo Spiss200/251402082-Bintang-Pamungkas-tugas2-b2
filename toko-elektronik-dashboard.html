@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Toko Elektronik Pak Damar</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Enhanced Styles for Toko Elektronik Dashboard Page */
+
+:root {
+    --primary-blue: #0f4c75;
+    --secondary-blue: #3282b8;
+    --accent-blue: #bbe1fa;
+    --text-dark: #222;
+    --bg-light: #fefefe;
+    --shadow: 0 12px 30px rgba(15, 76, 117, 0.15);
+    --border-radius: 20px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    font-family: 'Poppins', 'Montserrat', sans-serif;
+    background-color: #f9fafb;
+    color: var(--text-dark);
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 50%, var(--accent-blue) 100%);
+    box-shadow: 0 4px 20px rgba(15, 76, 117, 0.3);
+    font-weight: 600;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    color: white !important;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+}
+
+.navbar-nav .nav-link:hover {
+    color: white !important;
+    transform: translateY(-2px);
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-nav .nav-link.active {
+    color: white !important;
+    font-weight: 700;
+    text-shadow: 0 3px 8px rgba(255, 255, 255, 0.8);
+}
+
+.search-bar {
+    max-width: 320px;
+}
+
+.search-bar .form-control {
+    border-radius: 25px;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    transition: box-shadow 0.3s ease;
+}
+
+.search-bar .form-control:focus {
+    box-shadow: 0 0 10px rgba(50, 130, 184, 0.6);
+    outline: none;
+}
+
+.search-bar .btn-outline-light {
+    border-radius: 25px;
+    padding: 8px 18px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.search-bar .btn-outline-light:hover {
+    background-color: white;
+    color: var(--primary-blue);
+    box-shadow: 0 5px 15px rgba(50, 130, 184, 0.5);
+}
+
+.hero-section {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 50%, var(--accent-blue) 100%);
+    color: white;
+    padding: 100px 0 80px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(15, 76, 117, 0.3);
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&h=1080&fit=crop') no-repeat center center;
+    background-size: cover;
+    opacity: 0.15;
+    z-index: 1;
+    filter: brightness(0.8);
+    animation: slowZoom 25s ease-in-out infinite alternate;
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    text-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.hero-section p {
+    font-size: 1.3rem;
+    font-weight: 500;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes slowZoom {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.product-card {
+    border: none;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    overflow: hidden;
+    background: white;
+    cursor: pointer;
+}
+
+.product-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 20px 50px rgba(15, 76, 117, 0.3);
+}
+
+.product-card .card-img-top {
+    height: 220px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+}
+
+.product-card:hover .card-img-top {
+    transform: scale(1.15);
+}
+
+.product-card .card-body {
+    padding: 30px 25px;
+}
+
+.product-card .card-title {
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 12px;
+    font-size: 1.3rem;
+}
+
+.product-card .price {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--secondary-blue);
+    margin-bottom: 18px;
+}
+
+.product-card .card-text {
+    color: #555;
+    margin-bottom: 25px;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.btn-product {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+    border: none;
+    border-radius: 30px;
+    padding: 12px 30px;
+    font-weight: 700;
+    color: white;
+    transition: var(--transition);
+    box-shadow: 0 6px 20px rgba(50, 130, 184, 0.4);
+}
+
+.btn-product:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 30px rgba(50, 130, 184, 0.6);
+    background: linear-gradient(135deg, var(--secondary-blue) 0%, var(--primary-blue) 100%);
+}
+
+.advertisement {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ffa726 50%, #42a5f5 100%);
+    border-radius: var(--border-radius);
+    padding: 50px 40px;
+    text-align: center;
+    color: white;
+    margin: 60px 0;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(255, 107, 107, 0.5);
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.advertisement::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1920&h=1080&fit=crop') no-repeat center center;
+    background-size: cover;
+    opacity: 0.25;
+    z-index: 1;
+    filter: brightness(0.8);
+    animation: slowZoom 30s ease-in-out infinite alternate;
+}
+
+.advertisement .container {
+    position: relative;
+    z-index: 2;
+}
+
+.advertisement h3 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.advertisement .btn {
+    background: white;
+    color: #ff6b6b;
+    border: none;
+    border-radius: 30px;
+    padding: 15px 40px;
+    font-weight: 700;
+    transition: var(--transition);
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+}
+
+.advertisement .btn:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: scale(1.1);
+    box-shadow: 0 10px 30px rgba(255, 107, 107, 0.6);
+}
+
+footer {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 1px;
+    box-shadow: 0 -4px 20px rgba(15, 76, 117, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 60px 20px 40px 20px;
+    }
+
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+
+    .product-card .card-body {
+        padding: 20px 15px;
+    }
+
+    .advertisement {
+        padding: 30px 20px;
+    }
+
+    .advertisement h3 {
+        font-size: 1.8rem;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-bolt me-2"></i>Toko Elektronik Pak Damar
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#products">Data Produk</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#profile">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="toko-elektronik-login.html">Logout</a>
+                    </li>
+                </ul>
+                <form class="d-flex search-bar">
+                    <input class="form-control me-2" type="search" placeholder="Cari produk..." aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section" id="home">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Selamat Datang di Toko Elektronik Pak Damar</h1>
+            <p class="lead">Temukan berbagai produk elektronik berkualitas dengan harga terbaik</p>
+        </div>
+    </section>
+
+    <section class="py-5" id="products">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold text-dark">Produk Unggulan</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card product-card">
+                        <img src="https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/catalog-image/118/MTA-177768676/panasonic_panasonic_th-43nx600g_4k_led_google_tv_-43_inch-_full02_rq2eusbk.jpg" class="card-img-top" alt="Televisi LED">
+                        <div class="card-body">
+                            <h5 class="card-title">Televisi LED 43 Inch</h5>
+                            <p class="price">Rp 3.500.000</p>
+                            <p class="card-text">Televisi LED berkualitas tinggi dengan resolusi 4K dan smart TV features, seperti assistent google.</p>
+                            <button class="btn btn-product">Beli Sekarang</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card product-card">
+                        <img src="https://lh7-us.googleusercontent.com/pc5wAcXrctUlPTaaWlV2CyCGmgx7j_VCTPdyBAWyoPt2VhLcFflxXBcJQGLbo7d1KvGV4c04Rd-fLzqW4eiLAP4b-0K2A5k_McPvCZRd5FSEJ9llGG8AtAfMMLD-axywJfdZPJB-q5D9Qozlb794UFI" class="card-img-top" alt="Kulkas 2 Pintu">
+                        <div class="card-body">
+                            <h5 class="card-title">Kulkas 2 Pintu</h5>
+                            <p class="price">Rp 4.200.000</p>
+                            <p class="card-text">Kulkas hemat energi dengan kapasitas besar dan fitur defrost otomatis.</p>
+                            <button class="btn btn-product">Beli Sekarang</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card product-card">
+                        <img src="https://s3.ap-southeast-1.amazonaws.com/stream.orbit.co.id/content/uploads/2023/06/29102551/laptop-gaming-semarang-3.jpg" class="card-img-top" alt="Laptop Gaming">
+                        <div class="card-body">
+                            <h5 class="card-title">Laptop Gaming</h5>
+                            <p class="price">Rp 15.000.000</p>
+                            <p class="card-text">Laptop dengan spesifikasi tinggi untuk gaming dan produktivitas profesional.</p>
+                            <button class="btn btn-product">Beli Sekarang</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card product-card">
+                        <img src="https://static.retailworldvn.com/Products/Images/12220/322460/smartphone-redmi-note-13-pro-5g-8gb-256gb-aurora-purple-thumb-1-600x600.jpg" class="card-img-top" alt="Smartphone Android">
+                        <div class="card-body">
+                            <h5 class="card-title">Smartphone Android</h5>
+                            <p class="price">Rp 3.000.000</p>
+                            <p class="card-text">Smartphone dengan kamera berkualitas tinggi dan baterai tahan lama.</p>
+                            <button class="btn btn-product">Beli Sekarang</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card product-card">
+                        <img src="https://cdn.polytron.co.id/public-assets/polytroncoid/2024/04/YW50aWtvZGVfXzE2MjY4NjA1NDFfcGZsMTEwNS1qcGc11-1024x910-1.jpg" class="card-img-top" alt="Mesin Cuci Front Load">
+                        <div class="card-body">
+                            <h5 class="card-title">Mesin Cuci Front Load</h5>
+                            <p class="price">Rp 5.500.000</p>
+                            <p class="card-text">Mesin cuci hemat air dan energi dengan berbagai mode pencucian canggih.</p>
+                            <button class="btn btn-product">Beli Sekarang</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card product-card">
+                        <img src="https://cdn.ruparupa.io/fit-in/400x400/filters:format(webp)/filters:quality(90)/ruparupa-com/image/upload/Products/10530838_1.jpg" class="card-img-top" alt="Kipas Angin Standing">
+                        <div class="card-body">
+                            <h5 class="card-title">Kipas Angin Standing</h5>
+                            <p class="price">Rp 350.000</p>
+                            <p class="card-text">Kipas angin dengan pengatur kecepatan dan fitur timer otomatis, dan hemat energi.</p>
+                            <button class="btn btn-product">Beli Sekarang</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="advertisement">
+        <div class="container">
+            <h3>Diskon Spesial!</h3>
+            <p>Dapatkan potongan harga hingga 30% untuk produk elektronik tertentu. Promo terbatas!</p>
+            <button class="btn">Lihat Promo</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Toko Elektronik Pak Damar. Semua hak dilindungi.</p>
+        </div>
+    </footer>
+
+    <script src="bootstrap.bundle.js"></script>
+</body>
+</html>
